@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SampleAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class CourseController : ControllerBase
     {
         private readonly BaseQuery _queryService;
