@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SampleAPI.Data.Repositories
 {
-    public class Repository : BaseRepository
+    public sealed class Repository : BaseRepository
     {
 		public Repository(ILoggerFactory logger) : base(logger)
         {
