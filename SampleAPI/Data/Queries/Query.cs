@@ -1,21 +1,20 @@
-﻿using SampleAPI.Data.Repositories;
-using SampleAPI.Domain;
+﻿using Microsoft.Extensions.Logging;
+using SampleAPI.Data.Repositories;
 using SampleAPI.Models;
-using System.Collections.Generic;
 
 namespace SampleAPI.Data.Queries
 {
-    public class Query : BaseQuery
+    public sealed class Query : BaseQuery
     {
-        private readonly BaseRepository _repository;
-
-        public Query(BaseRepository repository)
+        public Query(BaseRepository repository, ILoggerFactory logger) : base(repository, logger)
         {
             _repository = repository;
+            _logger = logger.CreateLogger("Query");
         }
 
         public override CourseModel GetCourseInformation()
         {
+            _logger.LogInformation("retrieving course data for client");
             return new CourseModel(_repository.GetCourses());
         }
     }
