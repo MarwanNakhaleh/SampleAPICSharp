@@ -8,7 +8,7 @@ namespace SampleAPI.Data.Repositories
     {
 		public Repository(ILoggerFactory logger) : base(logger)
         {
-			_logger = logger.CreateLogger("Repository");
+			_logger = logger.CreateLogger<Repository>();
         } 
 		public override List<Course> GetCourses()
 		{
