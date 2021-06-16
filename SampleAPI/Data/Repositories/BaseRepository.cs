@@ -12,7 +12,7 @@ namespace SampleAPI.Data.Repositories
         public BaseRepository(ILoggerFactory logger)
         {
             _courses = new List<Course>();
-            _logger = logger.CreateLogger("BaseRepository");
+            _logger = logger.CreateLogger<BaseRepository>();
         }
 
         public abstract List<Course> GetCourses();

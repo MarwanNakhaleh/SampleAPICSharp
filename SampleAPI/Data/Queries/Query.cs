@@ -9,7 +9,7 @@ namespace SampleAPI.Data.Queries
         public Query(BaseRepository repository, ILoggerFactory logger) : base(repository, logger)
         {
             _repository = repository;
-            _logger = logger.CreateLogger("Query");
+            _logger = logger.CreateLogger<Query>();
         }
 
         public override CourseModel GetCourseInformation()

@@ -12,7 +12,7 @@ namespace SampleAPI.Data.Queries
         public BaseQuery(BaseRepository repository, ILoggerFactory logger)
         {
             _repository = repository;
-            _logger = logger.CreateLogger("BaseQuery");
+            _logger = logger.CreateLogger<BaseQuery>();
         }
         public abstract CourseModel GetCourseInformation();
     }
