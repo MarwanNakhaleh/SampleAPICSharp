@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SampleAPI.Configurations;
 using SampleAPI.Data.Queries;
 using SampleAPI.Data.Repositories;
 
@@ -24,7 +25,7 @@ namespace SampleAPI
         {
             services.AddControllers();
             services.AddAWSService<IAmazonDynamoDB>();
-
+            services.AddSingleton(GetDbConfiguration());
             services.AddScoped<BaseRepository, Repository>();
             services.AddScoped<BaseQuery, Query>();
         }
@@ -51,6 +52,16 @@ namespace SampleAPI
                     await context.Response.WriteAsync("Welcome to running ASP.NET Core on AWS Lambda");
                 });
             });
+        }
+
+        private static DbConfiguration GetDbConfiguration()
+        {
+            DbConfiguration dbConf = new DbConfiguration()
+            {
+                ServiceURL = Configuration.GetValue<string>(ConfigurationKeys.DynamoDBServiceURLKey),
+                TableName = Configuration.GetValue<string>(ConfigurationKeys.DynamoDBTableNameKey)
+            };
+            return dbConf;
         }
     }
 }
