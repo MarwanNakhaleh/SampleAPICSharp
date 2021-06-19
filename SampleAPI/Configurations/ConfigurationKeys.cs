@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace SampleAPI.Configurations
+﻿namespace SampleAPI.Configurations
 {
     public class ConfigurationKeys
     {
-        public static String DynamoDBServiceURLKey = "AWS:DynamoDB:ServiceURL";
-        public static String DynamoDBTableNameKey = "AWS:DynamoDB:TableName";
+        public static string DynamoDBServiceURLKey = "AWS:DynamoDB:ServiceURL";
+        public static string DynamoDBTableNameKey = "AWS:DynamoDB:TableName";
     }
 }
